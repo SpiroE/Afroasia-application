@@ -185,11 +185,11 @@ namespace Testing1
             // Boolean used to record
             Boolean OK = true;
             // Creates test data
-            Int32 CustomerID = 3;
+            Int32 CustomerID = 1;
             // Invokes the method
             Found = ACustomer.Find(CustomerID);
             // Checks the property
-            if (ACustomer.AccountCreationDate != Convert.ToDateTime(DateTime.Now))
+            if (ACustomer.AccountCreationDate != Convert.ToDateTime("13/02/2023"))
             {
                 OK = false;
             }
@@ -207,11 +207,11 @@ namespace Testing1
             // Boolean used to record
             Boolean OK = true;
             // Creates test data
-            Int32 CustomerID = 3;
+            Int32 CustomerID = 1;
             // Invokes the method
             Found = ACustomer.Find(CustomerID);
             // Checks the property
-            if (ACustomer.CustomerName != "Musa ibn Walid")
+            if (ACustomer.CustomerName != "Aisha Selcuk")
             {
                 OK = false;
             }
@@ -229,11 +229,11 @@ namespace Testing1
             // Boolean used to record
             Boolean OK = true;
             // Creates test data
-            Int32 CustomerID = 3;
+            Int32 CustomerID = 1;
             // Invokes the method
             Found = ACustomer.Find(CustomerID);
             // Checks the property
-            if (ACustomer.CustomerPhoneNo != "+447305097742")
+            if (ACustomer.CustomerPhoneNo != "+447305082284")
             {
                 OK = false;
             }
@@ -251,11 +251,11 @@ namespace Testing1
             // Boolean used to record
             Boolean OK = true;
             // Creates test data
-            Int32 CustomerID = 3;
+            Int32 CustomerID = 1;
             // Invokes the method
             Found = ACustomer.Find(CustomerID);
             // Checks the property
-            if (ACustomer.CustomerEmail != "musawalid012@gmail.com")
+            if (ACustomer.CustomerEmail != "aishaselcuk02@gmail.com")
             {
                 OK = false;
             }
@@ -273,11 +273,11 @@ namespace Testing1
             // Boolean used to record
             Boolean OK = true;
             // Creates test data
-            Int32 CustomerID = 3;
+            Int32 CustomerID = 1;
             // Invokes the method
             Found = ACustomer.Find(CustomerID);
             // Checks the property
-            if (ACustomer.CustomerPass != "password123")
+            if (ACustomer.CustomerPass != "SecretPassword198!!")
             {
                 OK = false;
             }
