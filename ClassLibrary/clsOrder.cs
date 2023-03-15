@@ -49,6 +49,7 @@ namespace ClassLibrary
         public string DateAddedValid(DateTime testData)
         {
             DateTime TestDate = DateTime.Now.Date.AddYears(-1);
+            DateTime TestDate2 = DateTime.Now.Date.AddYears(+1);
             if (testData < TestDate)
             {
                 return "Date is more than 1 year old";
