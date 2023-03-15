@@ -134,7 +134,7 @@ namespace Testing4
             string Error = "";
             Error = AnOrder.DateAddedValid(TestData);
             // test to see if the two values are the same
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -147,7 +147,7 @@ namespace Testing4
             string Error = "";
             Error = AnOrder.DateAddedValid(TestData);
             // test to see if the two values are the same
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -160,7 +160,7 @@ namespace Testing4
             string Error = "";
             Error = AnOrder.DateAddedValid(TestData);
             // test to see if the two values are the same
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -170,6 +170,19 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             // create some test data
             DateTime TestData = DateTime.Now.Date.AddYears(+1).AddDays(+1);
+            string Error = "";
+            Error = AnOrder.DateAddedValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMid()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            DateTime TestData = DateTime.Now.Date.AddMonths(+6);
             string Error = "";
             Error = AnOrder.DateAddedValid(TestData);
             // test to see if the two values are the same
@@ -190,6 +203,91 @@ namespace Testing4
         }
 
         [TestMethod]
+        public void NoOfCasesMinExtreme()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = -1000000;
+            //create error message
+            string Error = "";
+            Error = AnOrder.NoOfCasesValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NoOfCasesMinLessOne()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = 0;
+            //create error message
+            string Error = "";
+            Error = AnOrder.NoOfCasesValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NoOfCasesMin()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = 1;
+            //create error message
+            string Error = "";
+            Error = AnOrder.NoOfCasesValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NoOfCasesMinPlusOne()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = 2;
+            //create error message
+            string Error = "";
+            Error = AnOrder.NoOfCasesValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NoOfCasesMaxLessOne()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = int.MaxValue - 1;
+            //create error message
+            string Error = "";
+            Error = AnOrder.NoOfCasesValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NoOfCasesMax()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = int.MaxValue;
+            //create error message
+            string Error = "";
+            Error = AnOrder.NoOfCasesValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
         public void ProductIDOK()
         {
             // create an instance of the class we want to create
@@ -200,6 +298,90 @@ namespace Testing4
             AnOrder.ProductID = TestData;
             // test to see if the two values are the same
             Assert.AreEqual(AnOrder.ProductID, TestData);
+        }
+
+        [TestMethod]
+        public void ProductIDMinExtreme()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = -1000000;
+            //create error message
+            string Error = "";
+            Error = AnOrder.ProductIDValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductIDMinLessOne()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = 0;
+            //create error message
+            string Error = "";
+            Error = AnOrder.ProductIDValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductIDMin()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = 1;
+            //create error message
+            string Error = "";
+            Error = AnOrder.ProductIDValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductIDMinPlussOne()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = 2;
+            //create error message
+            string Error = "";
+            Error = AnOrder.ProductIDValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductIDMaxLessOne()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = int.MaxValue - 1;
+            //create error message
+            string Error = "";
+            Error = AnOrder.ProductIDValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductIDMax()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = int.MaxValue;
+            //create error message
+            string Error = "";
+            Error = AnOrder.ProductIDValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
