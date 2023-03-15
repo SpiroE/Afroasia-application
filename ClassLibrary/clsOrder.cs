@@ -49,10 +49,47 @@ namespace ClassLibrary
         public string DateAddedValid(DateTime testData)
         {
             DateTime TestDate = DateTime.Now.Date.AddYears(-1);
-            DateTime TestDate2 = DateTime.Now.Date.AddYears(+1);
+            DateTime TestDate2 = DateTime.Now.Date;
             if (testData < TestDate)
             {
                 return "Date is more than 1 year old";
+            }
+            if(testData > TestDate2)
+            {
+                return "Date cannot be after today";
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public string NoOfCasesValid(int testData)
+        {
+           
+            if (testData < 1)
+            {
+                return "The number must be between 0 and " + int.MaxValue + ".";
+            }
+            if (testData > int.MaxValue)
+            {
+                return "The number must not exceed " + int.MaxValue + ".";
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public string ProductIDValid(int testData)
+        {
+            if (testData < 1)
+            {
+                return "The number must be between 0 and " + int.MaxValue + ".";
+            }
+            if (testData > int.MaxValue)
+            {
+                return "The number must not exceed " + int.MaxValue + ".";
             }
             else
             {
