@@ -84,6 +84,32 @@ namespace Testing4
             // test to see if the two values are the same
             Assert.AreEqual(AnOrder.DateAdded, TestData);
         }
+        
+        [TestMethod]
+        public void DateAddedMinExtreme()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            DateTime TestData = DateTime.Now.Date.AddYears(-100);
+            string Error = "";
+            Error = AnOrder.DateAddedValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMinLessOne()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            DateTime TestData = DateTime.Now.Date.AddYears(-1).AddDays(-1);
+            string Error = "";
+            Error = AnOrder.DateAddedValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreNotEqual(Error, "");
+        }
 
         [TestMethod]
         public void DateAddedMin()
@@ -96,6 +122,58 @@ namespace Testing4
             Error = AnOrder.DateAddedValid(TestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMinPlusOne()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            DateTime TestData = DateTime.Now.Date.AddDays(+1);
+            string Error = "";
+            Error = AnOrder.DateAddedValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMaxLessOne()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            DateTime TestData = DateTime.Now.Date.AddYears(+1).AddDays(-1);
+            string Error = "";
+            Error = AnOrder.DateAddedValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMax()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            DateTime TestData = DateTime.Now.Date.AddYears(+1);
+            string Error = "";
+            Error = AnOrder.DateAddedValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMaxPlusOne()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            DateTime TestData = DateTime.Now.Date.AddYears(+1).AddDays(+1);
+            string Error = "";
+            Error = AnOrder.DateAddedValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -254,7 +332,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void AddressExtreme()
+        public void AddressMaxExtreme()
         {
             // create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
