@@ -25,7 +25,6 @@
         <br />
         <asp:Label ID="lblCustomerPass" runat="server" height="19px" Text="Customer Password" width="150px"></asp:Label>
         <asp:TextBox ID="txtCustomerPass" runat="server"></asp:TextBox>
-        <asp:Label ID="lblFormatExamplePass" runat="server" Text="50 Character Limit"></asp:Label>
         <br />
         <asp:Label ID="lblAccountCreationDate" runat="server" height="19px" Text="Account Creation Date" width="150px" Font-Bold="False" Font-Italic="False"></asp:Label>
         <asp:TextBox ID="txtAccountCreationDate" runat="server"></asp:TextBox>
