@@ -7,7 +7,14 @@ namespace Testing1
     [TestClass]
     public class tstCustomer
     {
-       
+
+        // Set of test data to pass onto the Valid method
+        string CustomerName = "Musa ibn Walid";
+        string CustomerPhoneNo = "+447305097742";
+        string CustomerEmail = "musawalid012@gmail.com";
+        string CustomerPass = "password123";
+        string AccountCreationDate = DateTime.Now.Date.ToString();
+
         /*
          * PropertyOK methods are listed below
          */
@@ -111,7 +118,7 @@ namespace Testing1
             // Tests to see if both values are the same
             Assert.AreEqual(ACustomer.CustomerPass, TestData);
         }
-        
+
         /*
          * Found methods are listed below
          */
@@ -283,6 +290,634 @@ namespace Testing1
             }
             // Tests to see if output is true
             Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        /*
+         * CustomerName Testing - Min Mid Max
+         */
+
+        [TestMethod]
+        public void CustomerNameMinLessOne()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerName = "";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerNameMin()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerName = "m";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerNameMinPlusOne()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerName = "mu";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerNameMaxLessOne()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerNameMax()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerNameMid()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerNameMaxPlusOne()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerNameExtremeMax()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerName = "";
+            CustomerName = CustomerName.PadRight(250, 'a');
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreNotEqual(Error, "");
+        }
+
+        /*
+         * AccountCreationDate Testing - Min Mid Max
+         */
+
+        [TestMethod]
+        public void AccountCreationDateExtremeMin()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            DateTime TestDate;
+            // Set the date to todays
+            TestDate = DateTime.Now.Date;
+            // Change date to 100 years before the current date
+            TestDate = TestDate.AddYears(-100);
+            // Converts the DateTime to a string
+            string AccountCreationDate = TestDate.ToString();
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AccountCreationDateMinLessOne()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            DateTime TestDate;
+            // Set the date to todays
+            TestDate = DateTime.Now.Date;
+            // Change date to one day before the current date
+            TestDate = TestDate.AddDays(-1);
+            // Converts the DateTime to a string
+            string AccountCreationDate = TestDate.ToString();
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AccountCreationDateMin()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //convert the date variable to a string variable
+            string AccountCreationDate = TestDate.ToString();
+            //invoke the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void AccountCreationDateMinPlusOne()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            DateTime TestDate;
+            // Set the date to todays
+            TestDate = DateTime.Now.Date;
+            // Change date to one day after the current date
+            TestDate = TestDate.AddDays(1);
+            // Converts the DateTime to a string
+            string AccountCreationDate = TestDate.ToString();
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AccountCreationDateExtremeMax()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            DateTime TestDate;
+            // Set the date to todays
+            TestDate = DateTime.Now.Date;
+            // Change date to 100 years after the current date
+            TestDate = TestDate.AddYears(100);
+            // Converts the DateTime to a string
+            string AccountCreationDate = TestDate.ToString();
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AccountCreationDateInvalidData()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Sets AccountCreationDate to a non-date value
+            string AccountCreationDate = "This is not a date";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreNotEqual(Error, "");
+        }
+
+        /*
+         * CustomerPhoneNo Testing - Min Mid Max
+         */
+
+        [TestMethod]
+        public void CustomerPhoneNoMinLessOne()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerPhoneNo = "";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPhoneNoMin()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerPhoneNo = "+";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPhoneNoMinPlusOne()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerPhoneNo = "+4";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPhoneNoMaxLessOne()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerPhoneNo = "+4483283195038";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPhoneNoMax()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerPhoneNo = "+44832831950382";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPhoneNoMaxPlusOne()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerPhoneNo = "+448328319503824";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPhoneNoMid()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerPhoneNo = "+448328";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        /*
+         * CustomerEmail Testing - Min Mid Max
+         */
+
+        [TestMethod]
+        public void CustomerEmailLessOne()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerEmail = "";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerEmailMin()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerEmail = "a";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerEmailMinPlusOne()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerEmail = "aa";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerEmailMaxLessOne()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerEmail = "";
+            CustomerEmail = CustomerEmail.PadRight(89, 'a');
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerEmailMax()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerEmail = "";
+            CustomerEmail = CustomerEmail.PadRight(90, 'a');
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerEmailMaxPlusOne()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerEmail = "";
+            CustomerEmail = CustomerEmail.PadRight(91, 'a');
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerEmailMid()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerEmail = "";
+            CustomerEmail = CustomerEmail.PadRight(45, 'a');
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void CustomerEmailExtremeMax()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerEmail = "";
+            CustomerEmail = CustomerEmail.PadRight(250, 'a');
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreNotEqual(Error, "");
+        }
+
+        /*
+         * CustomerPass Testing - Min Mid Max
+         */
+        
+        [TestMethod]
+        public void CustomerPassLessOne()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerEmail = "";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreNotEqual(Error, "");
+        }
+
+        public void CustomerPassMin()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerEmail = "a";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPassMinPlusOne()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerEmail = "aa";
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPassMaxLessOne()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerPass = "";
+            CustomerPass = CustomerPass.PadRight(49, 'a');
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPassMax()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerPass = "";
+            CustomerPass = CustomerPass.PadRight(50, 'a');
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPassMaxPlusOne()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerPass = "";
+            CustomerPass = CustomerPass.PadRight(51, 'a');
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPassMid()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerPass = "";
+            CustomerPass = CustomerPass.PadRight(25, 'a');
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPassExtremeMax()
+        {
+            // Creates an instance of the new Class wanting to be created
+            clsCustomer ACustomer = new clsCustomer();
+            // String to store any sort of error message
+            String Error = "";
+            // Creates test data
+            string CustomerPass = "";
+            CustomerPass = CustomerPass.PadRight(250, 'a');
+            // Invokes the method
+            Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
+            // Tests to see if output is true
+            Assert.AreNotEqual(Error, "");
         }
 
     }

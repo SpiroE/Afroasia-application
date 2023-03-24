@@ -44,7 +44,7 @@ namespace ClassLibrary
             }
         }
 
-        public Int32 CustomerID 
+        public Int32 CustomerID
         {
             get
             {
@@ -136,11 +136,120 @@ namespace ClassLibrary
                 // Always return the value true
                 return true;
             }
-            else 
+            else
             {
                 // Returns a false value (issue present)
                 return false;
             }
         }
+
+        public string Valid(string customerName, string customerPhoneNo, string customerEmail, string customerPass, string accountCreationDate)
+        {
+            // String to store any sort of error message
+            String Error = "";
+            // Temporarily store any sort of date value
+            DateTime DateTemp;
+
+            /*
+             * Customer Name validation
+             */
+
+            // If the Customer Name is blank then...
+            if (customerName.Length == 0)
+            {
+                // Record the error
+                Error = Error + "The name may not be blank : ";
+            }
+
+            // If the Customer Name is too long then...
+            if (customerName.Length > 90)
+            {
+                // Record the error
+                Error = Error + "The name has to be 90 characters or less : ";
+            }
+
+            /*
+             * Account Creation Date validation
+             */
+
+            try
+            {
+                // If the Account Creation Date is before the current date then...
+                DateTemp = Convert.ToDateTime(accountCreationDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    // Record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                // If the Account Creation Date is after the current date then...
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    // Record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                // Record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            /*
+             * Customer Phone Number validation
+             */
+
+            // If the Customer Phone Number is blank then...
+            if (customerPhoneNo.Length == 0)
+            {
+                // Record the error
+                Error = Error + "The phone number cannot be left blank : ";
+            }
+
+            // If the Customer Phone Number is too long then...
+            if (customerPhoneNo.Length > 15)
+            {
+                // Record the error
+                Error = Error + "The phone number must be less than 16 characters : ";
+            }
+
+
+            /*
+             * Customer Email validation
+             */
+
+            // If the Customer Email is blank then...
+            if (customerEmail.Length == 0)
+            {
+                // Record the error
+                Error = Error + "The email cannot be left blank : ";
+            }
+
+            // If the Customer Email is too long then...
+            if (customerEmail.Length > 90)
+            {
+                //record the error
+                Error = Error + "The email must be 90 characters or less : ";
+            }
+
+            /*
+             *  Customer Pass validation
+             */
+
+            // If the password is blank then...
+            if (customerPass.Length == 0)
+            {
+                // Record the error
+                Error = Error + "The password cannot be blank : ";
+            }
+            
+            // If the password is too long then...
+            if (customerPass.Length > 50)
+            {
+                // Record the error
+                Error = Error + "The password must be 50 characters or less : ";
+            }
+            return Error;
+        }
+
     }
 }
