@@ -2,9 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Test_Framework
 {
@@ -18,6 +15,77 @@ namespace Test_Framework
             clsCustomerCollection AllCustomers = new clsCustomerCollection();
             // Checks existence
             Assert.IsNotNull(AllCustomers);
+        }
+
+        [TestMethod]
+        public void CustomerListOK()
+        {
+            // Creates an instance of the Class specified below
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            // Assigns test data to the property
+            List<clsCustomer> TestList = new List<clsCustomer>();
+            // Creates test data
+            clsCustomer TestItem = new clsCustomer();
+            // Setting the properties of each item
+            TestItem.AccountChecker = true;
+            TestItem.CustomerID = 1;
+            TestItem.CustomerName = "Aisha Selcuk";
+            TestItem.CustomerPhoneNo = "+447305082284";
+            TestItem.CustomerEmail = "aishaselcuk02@gmail.com";
+            TestItem.CustomerPass = "SecretPassword198!!";
+            TestItem.AccountCreationDate = DateTime.Now.Date;
+            // Add the test items to the test list
+            TestList.Add(TestItem);
+            // Assigns test data to the propertry
+            AllCustomers.CustomerList = TestList;
+            // Tests to see if both values are the same
+            Assert.AreEqual(AllCustomers.CustomerList, TestList);
+        }
+
+        [TestMethod]
+        public void ThisCustomerPropertyOK()
+        {
+            // Creates an instance of the Class specified below
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            // Creates test data to assign to property
+            clsCustomer TestCustomer = new clsCustomer();
+            // Setting the properties of the test object
+            TestCustomer.AccountChecker = true;
+            TestCustomer.CustomerID = 1;
+            TestCustomer.CustomerName = "Aisha Selcuk";
+            TestCustomer.CustomerPhoneNo = "+447305082284";
+            TestCustomer.CustomerEmail = "aishaselcuk02@gmail.com";
+            TestCustomer.CustomerPass = "SecretPassword198!!";
+            TestCustomer.AccountCreationDate = DateTime.Now.Date;
+            // Assigns test data to the property
+            AllCustomers.ThisCustomer = TestCustomer;
+            // Tests to see if both values are the same
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestCustomer);
+        }
+
+        [TestMethod]
+        public void ListAndCountOK()
+        {
+            // Creates an instance of the Class specified below
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            // Assigns test data to the property
+            List<clsCustomer> TestList = new List<clsCustomer>();
+            // Creates test data
+            clsCustomer TestItem = new clsCustomer();
+            // Setting the properties of each item
+            TestItem.AccountChecker = true;
+            TestItem.CustomerID = 1;
+            TestItem.CustomerName = "Aisha Selcuk";
+            TestItem.CustomerPhoneNo = "+447305082284";
+            TestItem.CustomerEmail = "aishaselcuk02@gmail.com";
+            TestItem.CustomerPass = "SecretPassword198!!";
+            TestItem.AccountCreationDate = DateTime.Now.Date;
+            // Add the test items to the test list
+            TestList.Add(TestItem);
+            // Assigns test data to the propertry
+            AllCustomers.CustomerList = TestList;
+            // Tests to see if both values are the same
+            Assert.AreEqual(AllCustomers.Count, TestList.Count);
         }
     }
 }
