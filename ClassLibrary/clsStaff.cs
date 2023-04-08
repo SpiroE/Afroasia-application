@@ -11,5 +11,6 @@ namespace ClassLibrary
         public string StaffPayroll { get; set; }
         public DateTime Attendance { get; set; }
         public string Schedule { get; set; }
+       
     }
 }
