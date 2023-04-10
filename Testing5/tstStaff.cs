@@ -101,6 +101,173 @@ namespace Testing5
             //Checks if both values are the same
             Assert.AreEqual(AStaff.Schedule, TestData);
         }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            // Creates an instance of the class we want to create
+            clsStaff AStaff = new clsStaff();
+            // Boolean variable to store the results of the validation
+            Boolean Found = false;
+            // create some test data to use with the method
+            Int32 StaffID = 11;
+            //invoke the method
+            Found = AStaff.Find(StaffID);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestStaffIDFound()
+        {
+            // Creates an instance of the new class we want to create 
+            clsStaff AStaff = new clsStaff();
+            // Boolean variable to stroe the result of the search
+            Boolean Found = false;
+            // Boolean variable to recoed if the data is ok 
+            Boolean OK = true;
+            // create some test data to use with the method
+            Int32 StaffID = 11;
+            //invoke the method
+            Found = AStaff.Find(StaffID);
+            //check staff id
+            if (AStaff.StaffID != 11)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+       
+        [TestMethod]
+        public void TestAttendanceFound()
+        {
+            // Creates an instance of the new class we want to create 
+            clsStaff AStaff = new clsStaff();
+            // Boolean variable to stroe the result of the search
+            Boolean Found = false;
+            // Boolean variable to recoed if the data is ok 
+            Boolean OK = true;
+            // create some test data to use with the method
+            Int32 StaffID = 11;
+            //invoke the method
+            Found = AStaff.Find(StaffID);
+            //check attendance
+            if (AStaff.Attendance != Convert.ToDateTime("16/09/2015"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestShiftConfirmationFound()
+        {
+            // Creates an instance of the new class we want to create 
+            clsStaff AStaff = new clsStaff();
+            // Boolean variable to stroe the result of the search
+            Boolean Found = false;
+            // Boolean variable to recoed if the data is ok 
+            Boolean OK = true;
+            // create some test data to use with the method
+            Int32 StaffID = 11;
+            //invoke the method
+            Found = AStaff.Find(StaffID);
+            //check staff name
+            if (AStaff.ShiftConfirmation != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffNameFound()
+        {
+            // Creates an instance of the new class we want to create 
+            clsStaff AStaff = new clsStaff();
+            // Boolean variable to stroe the result of the search
+            Boolean Found = false;
+            // Boolean variable to recoed if the data is ok 
+            Boolean OK = true;
+            // create some test data to use with the method
+            Int32 StaffID = 11;
+            //invoke the method
+            Found = AStaff.Find(StaffID);
+            //check staff name
+            if (AStaff.StaffName != "Leyla Smith")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffPhoneNoFound()
+        {
+            // Creates an instance of the new class we want to create 
+            clsStaff AStaff = new clsStaff();
+            // Boolean variable to stroe the result of the search
+            Boolean Found = false;
+            // Boolean variable to recoed if the data is ok 
+            Boolean OK = true;
+            // create some test data to use with the method
+            Int32 StaffID = 11;
+            //invoke the method
+            Found = AStaff.Find(StaffID);
+            //check staff name
+            if (AStaff.StaffPhoneNo != "+447305085596")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffPayrollFound()
+        {
+            // Creates an instance of the new class we want to create 
+            clsStaff AStaff = new clsStaff();
+            // Boolean variable to stroe the result of the search
+            Boolean Found = false;
+            // Boolean variable to recoed if the data is ok 
+            Boolean OK = true;
+            // create some test data to use with the method
+            Int32 StaffID = 11;
+            //invoke the method
+            Found = AStaff.Find(StaffID);
+            //check staff name
+            if (AStaff.StaffPayroll != "16.00")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestScheduleFound()
+        {
+            // Creates an instance of the new class we want to create 
+            clsStaff AStaff = new clsStaff();
+            // Boolean variable to stroe the result of the search
+            Boolean Found = false;
+            // Boolean variable to recoed if the data is ok 
+            Boolean OK = true;
+            // create some test data to use with the method
+            Int32 StaffID = 11;
+            //invoke the method
+            Found = AStaff.Find(StaffID);
+            //check staff name
+            if (AStaff.Schedule != "Weekdays")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
 
     }
 
