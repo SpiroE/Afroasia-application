@@ -29,6 +29,7 @@ namespace Testing5
             //Checks if both values are the same
             Assert.AreEqual(AStaff.ShiftConfirmation, TestData);
         }
+
         [TestMethod]
         public void StaffIDPropertyOK()
         {
@@ -41,6 +42,7 @@ namespace Testing5
             //Checks if both values are the same
             Assert.AreEqual(AStaff.StaffID, TestData);
         }
+
         [TestMethod]
         public void StaffNamePropertyOK()
         {
@@ -53,6 +55,7 @@ namespace Testing5
             //Checks if both values are the same
             Assert.AreEqual(AStaff.StaffName, TestData);
         }
+
         [TestMethod]
         public void StaffPhoneNoPropertyOK()
         {
@@ -65,6 +68,7 @@ namespace Testing5
             //Checks if both values are the same
             Assert.AreEqual(AStaff.StaffPhoneNo, TestData);
         }
+
         [TestMethod]
         public void StaffPayrollPropertyOK()
         {
@@ -77,6 +81,7 @@ namespace Testing5
             //Checks if both values are the same
             Assert.AreEqual(AStaff.StaffPayroll, TestData);
         }
+
         [TestMethod]
         public void AttendancePropertyOK()
         {
@@ -89,6 +94,7 @@ namespace Testing5
             // Tests to see if both values are the same
             Assert.AreEqual(AStaff.Attendance, TestData);
         }
+
         [TestMethod]
         public void SchedulePropertyOK()
         {
@@ -101,6 +107,7 @@ namespace Testing5
             //Checks if both values are the same
             Assert.AreEqual(AStaff.Schedule, TestData);
         }
+
         [TestMethod]
         public void FindMethodOK()
         {
@@ -109,12 +116,13 @@ namespace Testing5
             // Boolean variable to store the results of the validation
             Boolean Found = false;
             // create some test data to use with the method
-            Int32 StaffID = 11;
+            Int32 StaffID = 1;
             //invoke the method
             Found = AStaff.Find(StaffID);
             //test to see if the result is true
             Assert.IsTrue(Found);
         }
+
         [TestMethod]
         public void TestStaffIDFound()
         {
@@ -125,11 +133,11 @@ namespace Testing5
             // Boolean variable to recoed if the data is ok 
             Boolean OK = true;
             // create some test data to use with the method
-            Int32 StaffID = 11;
+            Int32 StaffID = 1;
             //invoke the method
             Found = AStaff.Find(StaffID);
             //check staff id
-            if (AStaff.StaffID != 11)
+            if (AStaff.StaffID != 1)
             {
                 OK = false;
             }
@@ -147,11 +155,11 @@ namespace Testing5
             // Boolean variable to recoed if the data is ok 
             Boolean OK = true;
             // create some test data to use with the method
-            Int32 StaffID = 11;
+            Int32 StaffID = 1;
             //invoke the method
             Found = AStaff.Find(StaffID);
             //check attendance
-            if (AStaff.Attendance != Convert.ToDateTime("16/09/2015"))
+            if (AStaff.Attendance != Convert.ToDateTime("06/04/2023 00:00:00"))
             {
                 OK = false;
             }
@@ -164,12 +172,12 @@ namespace Testing5
         {
             // Creates an instance of the new class we want to create 
             clsStaff AStaff = new clsStaff();
-            // Boolean variable to stroe the result of the search
+            // Boolean variable to store the result of the search
             Boolean Found = false;
             // Boolean variable to recoed if the data is ok 
             Boolean OK = true;
             // create some test data to use with the method
-            Int32 StaffID = 11;
+            Int32 StaffID = 1;
             //invoke the method
             Found = AStaff.Find(StaffID);
             //check staff name
@@ -186,16 +194,16 @@ namespace Testing5
         {
             // Creates an instance of the new class we want to create 
             clsStaff AStaff = new clsStaff();
-            // Boolean variable to stroe the result of the search
+            // Boolean variable to store the result of the search
             Boolean Found = false;
             // Boolean variable to recoed if the data is ok 
             Boolean OK = true;
             // create some test data to use with the method
-            Int32 StaffID = 11;
+            Int32 StaffID = 1;
             //invoke the method
             Found = AStaff.Find(StaffID);
             //check staff name
-            if (AStaff.StaffName != "Leyla Smith")
+            if (AStaff.StaffName != "Baran")
             {
                 OK = false;
             }
@@ -208,16 +216,16 @@ namespace Testing5
         {
             // Creates an instance of the new class we want to create 
             clsStaff AStaff = new clsStaff();
-            // Boolean variable to stroe the result of the search
+            // Boolean variable to store the result of the search
             Boolean Found = false;
             // Boolean variable to recoed if the data is ok 
             Boolean OK = true;
             // create some test data to use with the method
-            Int32 StaffID = 11;
+            Int32 StaffID = 1;
             //invoke the method
             Found = AStaff.Find(StaffID);
             //check staff name
-            if (AStaff.StaffPhoneNo != "+447305085596")
+            if (AStaff.StaffPhoneNo != "0719460456")
             {
                 OK = false;
             }
@@ -230,12 +238,12 @@ namespace Testing5
         {
             // Creates an instance of the new class we want to create 
             clsStaff AStaff = new clsStaff();
-            // Boolean variable to stroe the result of the search
+            // Boolean variable to store the result of the search
             Boolean Found = false;
             // Boolean variable to recoed if the data is ok 
             Boolean OK = true;
             // create some test data to use with the method
-            Int32 StaffID = 11;
+            Int32 StaffID = 1;
             //invoke the method
             Found = AStaff.Find(StaffID);
             //check staff name
@@ -252,12 +260,12 @@ namespace Testing5
         {
             // Creates an instance of the new class we want to create 
             clsStaff AStaff = new clsStaff();
-            // Boolean variable to stroe the result of the search
+            // Boolean variable to store the result of the search
             Boolean Found = false;
             // Boolean variable to recoed if the data is ok 
             Boolean OK = true;
             // create some test data to use with the method
-            Int32 StaffID = 11;
+            Int32 StaffID = 1;
             //invoke the method
             Found = AStaff.Find(StaffID);
             //check staff name

@@ -15,16 +15,31 @@ namespace ClassLibrary
 
         public bool Find(int StaffID)
         {
-            //set the private data members to the test data value
-            mStaffID = 11;
-            mAttendance = Convert.ToDateTime("16/09/2015");
-            mShiftConfirmation = true;
-            mStaffName = "Leyla Smith";
-            mStaffPhoneNo = "+447305085596";
-            mStaffPayroll = "16.00";
-            mSchedule = "Weekdays";
-            //always return true
-            return true;
+            //create instance of data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add parameter for the staff id to search
+            DB.AddParameter("@StaffID", StaffID);
+            //execute stored procedure
+            DB.Execute("sproc_tblStaff_FilterByStaffID");
+            //if one record is found it should be one or zero
+            if (DB.Count == 1)
+            {
+                //set the private data to the test datas value
+                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]); ;
+                mAttendance = Convert.ToDateTime(DB.DataTable.Rows[0]["Attendance"]);
+                mShiftConfirmation = Convert.ToBoolean(DB.DataTable.Rows[0]["ShiftConfirmation"]);
+                mStaffName = Convert.ToString(DB.DataTable.Rows[0]["StaffName"]);
+                mStaffPhoneNo = Convert.ToString(DB.DataTable.Rows[0]["StaffPhoneNo"]);
+                mStaffPayroll = Convert.ToString(DB.DataTable.Rows[0]["StaffPayroll"]);
+                mSchedule = Convert.ToString(DB.DataTable.Rows[0]["Schedule"]);
+                //always return value true
+                return true;
+            }
+            else
+            {
+                //return a false value if there is a issue
+                return false;
+            }
         }
 
         public int StaffID
