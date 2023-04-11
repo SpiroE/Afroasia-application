@@ -18,27 +18,43 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsStaff
         clsStaff AStaff = new clsStaff();
-        //captures the staff id
-        AStaff.StaffID = Convert.ToInt32(txtStaffID.Text);
-        //captures the staff name
-        AStaff.StaffName = txtStaffName.Text;
-        //captures staff phone no
-        AStaff.StaffPhoneNo = txtStaffPhoneNo.Text;
-        //captures staff payroll
-        AStaff.StaffPayroll = txtStaffPayroll.Text;
-        //captures schedule
-        AStaff.Schedule = txtSchedule.Text;
-        //captures attendance
-        AStaff.Attendance = Convert.ToDateTime(txtAttendance.Text);
-        //captures shift confirmation
-        AStaff.ShiftConfirmation = Convert.ToBoolean(chkShiftConfirmation.Checked);
-        //store the address in the session object
-        Session["AStaff"] = AStaff;
-        //navigate to the viewrer page
-        Response.Redirect("5~StaffViewer.aspx");
+        //capture the staff name
+        string StaffName = txtStaffName.Text;
+        //capture the staff phone no
+        string StaffPhoneNo = txtStaffPhoneNo.Text;
+        //capture the staff payroll
+        string StaffPayroll = txtStaffPayroll.Text;
+        //capture the schedule
+        string Schedule = txtSchedule.Text;
+        //capture the attendance
+        string Attendance = txtAttendance.Text;
+        //variable to store error messages
+        string Error = "";
+        //validate the data
+        Error = AStaff.Valid(StaffName, StaffPhoneNo, StaffPayroll, Schedule, Attendance);
+        if (Error == "")
+        {
+            //captures the staff name
+            AStaff.StaffName = StaffName;
+            //captures staff phone no
+            AStaff.StaffPhoneNo = StaffPhoneNo;
+            //captures staff payroll
+            AStaff.StaffPayroll = StaffPayroll;
+            //captures schedule
+            AStaff.Schedule = Schedule;
+            //captures attendance
+            AStaff.Attendance = Convert.ToDateTime(Attendance);
+            //store the address in the session object
+            Session["AStaff"] = AStaff;
+            //navigate to the viewrer page
+            Response.Redirect("5~StaffViewer.aspx");
+        }
+        else
+        {
+            //display error message
+            lblError.Text = Error;
+        }
     }
-
-
 
     protected void Button1_Click(object sender, EventArgs e)
     {
