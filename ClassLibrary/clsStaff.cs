@@ -139,12 +139,52 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string schedule, string staffName, string staffPhoneNo, string attendance, string staffPayroll)
+        public string Valid(string staffName, string staffPhoneNo, string staffPayroll, string schedule, string attendance)
         {
             //store error message
             String Error = "";
             //create temporary variable to store date values
             DateTime DateTemp;
+
+            //if staff name is blank then
+            if (staffName.Length == 0)
+            {
+                //record error
+                Error = Error + "This is not an valid name : ";
+            }
+            //if staff name is greater than 50 characters then
+            if (staffName.Length > 50)
+            {
+                //record error
+                Error = Error + "The number of characters for the name exceeds more than 50 characters : ";
+            }
+
+
+            //if phone number is blank then
+            if (staffPhoneNo.Length == 0)
+            {
+                //record error
+                Error = Error + "This is not an valid phone number : ";
+            }
+            //if phone number is greater than 15 characters then
+            if (staffPhoneNo.Length > 15)
+            {
+                //record error
+                Error = Error + "The number of characters for the phone number exceeds more than 15 characters : ";
+            }
+
+            //if payroll is blank then
+            if (staffPayroll.Length == 0)
+            {
+                //record error
+                Error = Error + "This is not an valid payroll : ";
+            }
+            //if payroll is greater than 15 characters then
+            if (staffPayroll.Length > 15)
+            {
+                //record error
+                Error = Error + "The number of characters for the payroll exceeds more than 15 characters : ";
+            }
 
             //if schedule is blank then
             if (schedule.Length == 0)
@@ -180,45 +220,6 @@ namespace ClassLibrary
             {
                 //record the error
                 Error = Error + "The data entered was not a valid date : ";
-            }
-
-            //if payroll is blank then
-            if (staffPayroll.Length == 0)
-            {
-                //record error
-                Error = Error + "This is not an valid payroll : ";
-            }
-            //if payroll is greater than 15 characters then
-            if (staffPayroll.Length > 15)
-            {
-                //record error
-                Error = Error + "The number of characters for the payroll exceeds more than 15 characters : ";
-            }
-
-            //if staff name is blank then
-            if (staffName.Length == 0)
-            {
-                //record error
-                Error = Error + "This is not an valid name : ";
-            }
-            //if staff name is greater than 50 characters then
-            if (staffName.Length > 50)
-            {
-                //record error
-                Error = Error + "The number of characters for the name exceeds more than 50 characters : ";
-            }
-
-            //if phone number is blank then
-            if (staffPhoneNo.Length == 0)
-            {
-                //record error
-                Error = Error + "This is not an valid number : ";
-            }
-            //if phone number is greater than 15 characters then
-            if (staffPhoneNo.Length > 15)
-            {
-                //record error
-                Error = Error + "The number of characters for the phone number exceeds more than 15 characters : ";
             }
 
             //return error message
