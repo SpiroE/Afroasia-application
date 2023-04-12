@@ -23,10 +23,60 @@ namespace ClassLibrary
         }
 
         public DateTime DateAdded { get; set; }
-        public int NoOfCases { get; set; }
-        public int ProductID { get; set; }
-        public string Address { get; set; }
+        public string DateAddedValid(DateTime testData)
+        {
+            DateTime TestDate = DateTime.Now.Date.AddYears(-1);
+            DateTime TestDate2 = DateTime.Now.Date;
+            if (testData < TestDate)
+            {
+                return "Date is more than 1 year old";
+            }
+            if (testData > TestDate2)
+            {
+                return "Date cannot be after today";
+            }
+            else
+            {
+                return "";
+            }
+        }
 
+        public int NoOfCases { get; set; }
+        public string NoOfCasesValid(int testData)
+        {
+
+            if (testData < 1)
+            {
+                return "The number must be between 0 and " + int.MaxValue + ".";
+            }
+            if (testData > int.MaxValue)
+            {
+                return "The number must not exceed " + int.MaxValue + ".";
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public int ProductID { get; set; }
+        public string ProductIDValid(int testData)
+        {
+            if (testData < 1)
+            {
+                return "The number must be between 0 and " + int.MaxValue + ".";
+            }
+            if (testData > int.MaxValue)
+            {
+                return "The number must not exceed " + int.MaxValue + ".";
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public string Address { get; set; }
         public string AddressValid(string testData)
         {
             if (testData.Length < 1)
@@ -44,44 +94,23 @@ namespace ClassLibrary
         }
 
         public int CustomerID { get; set; }
+        public string CustomerIDValid(int testData)
+        {
+            if (testData < 1)
+            {
+                return "The number must be between 0 and " + int.MaxValue + ".";
+            }
+            if (testData > int.MaxValue)
+            {
+                return "The number must not exceed " + int.MaxValue + ".";
+            }
+            else
+            {
+                return "";
+            }
+        }
         public int OrderNo { get; set; }
-
-        public string DateAddedValid(DateTime testData)
-        {
-            DateTime TestDate = DateTime.Now.Date.AddYears(-1);
-            DateTime TestDate2 = DateTime.Now.Date;
-            if (testData < TestDate)
-            {
-                return "Date is more than 1 year old";
-            }
-            if(testData > TestDate2)
-            {
-                return "Date cannot be after today";
-            }
-            else
-            {
-                return "";
-            }
-        }
-
-        public string NoOfCasesValid(int testData)
-        {
-           
-            if (testData < 1)
-            {
-                return "The number must be between 0 and " + int.MaxValue + ".";
-            }
-            if (testData > int.MaxValue)
-            {
-                return "The number must not exceed " + int.MaxValue + ".";
-            }
-            else
-            {
-                return "";
-            }
-        }
-
-        public string ProductIDValid(int testData)
+        public string OrderIDValid(int testData)
         {
             if (testData < 1)
             {
@@ -96,5 +125,6 @@ namespace ClassLibrary
                 return "";
             }
         }
+
     }
 }

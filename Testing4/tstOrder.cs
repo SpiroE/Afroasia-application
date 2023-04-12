@@ -542,6 +542,90 @@ namespace Testing4
         }
 
         [TestMethod]
+        public void CustomerIDMinExtreme()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = -1000000;
+            //create error message
+            string Error = "";
+            Error = AnOrder.CustomerIDValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIDMinLessOne()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = 0;
+            //create error message
+            string Error = "";
+            Error = AnOrder.CustomerIDValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIDMin()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = 1;
+            //create error message
+            string Error = "";
+            Error = AnOrder.CustomerIDValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIDMinPlussOne()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = 2;
+            //create error message
+            string Error = "";
+            Error = AnOrder.CustomerIDValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIDMaxLessOne()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = int.MaxValue - 1;
+            //create error message
+            string Error = "";
+            Error = AnOrder.CustomerIDValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIDMax()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = int.MaxValue;
+            //create error message
+            string Error = "";
+            Error = AnOrder.CustomerIDValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
         public void OrderNoOK()
         {
             // create an instance of the class we want to create
@@ -553,7 +637,92 @@ namespace Testing4
             // test to see if the two values are the same
             Assert.AreEqual(AnOrder.OrderNo, TestData);
         }
+
+        [TestMethod]
+        public void OrderIDMinExtreme()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = -1000000;
+            //create error message
+            string Error = "";
+            Error = AnOrder.OrderIDValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderIDMinLessOne()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = 0;
+            //create error message
+            string Error = "";
+            Error = AnOrder.OrderIDValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderIDMin()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = 1;
+            //create error message
+            string Error = "";
+            Error = AnOrder.OrderIDValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderIDMinPlussOne()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = 2;
+            //create error message
+            string Error = "";
+            Error = AnOrder.OrderIDValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderIDMaxLessOne()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = int.MaxValue - 1;
+            //create error message
+            string Error = "";
+            Error = AnOrder.OrderIDValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderIDMax()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            int TestData = int.MaxValue;
+            //create error message
+            string Error = "";
+            Error = AnOrder.OrderIDValid(TestData);
+            // test to see if the two values are the same
+            Assert.AreEqual(Error, "");
+        }
+
     }
-   
+
 
 }
