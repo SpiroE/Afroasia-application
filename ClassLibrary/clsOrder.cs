@@ -8,7 +8,26 @@ namespace ClassLibrary
 {
     public class clsOrder
     {
-        public bool Fulfilled { get; set; }
+        //private data member for the properties to use
+        private int mOrderNo;
+        private int mCustomerID;
+        private string mAddress;
+        private int mProductID;
+        private int mNoOfCases;
+        private DateTime mDateAdded;
+        private bool mFulfilled;
+        //Public property
+        public bool Fulfilled
+        {
+            get
+            {
+                return mFulfilled;
+            }
+            set
+            {
+                mFulfilled = value;
+            }
+        }
 
         public string FulfilledValid(bool testData)
         {
@@ -22,7 +41,17 @@ namespace ClassLibrary
             }
         }
 
-        public DateTime DateAdded { get; set; }
+        public DateTime DateAdded
+        {
+            get
+            {
+                return mDateAdded;
+            }
+            set
+            {
+                mDateAdded = value;
+            }
+        }
         public string DateAddedValid(DateTime testData)
         {
             DateTime TestDate = DateTime.Now.Date.AddYears(-1);
@@ -41,7 +70,17 @@ namespace ClassLibrary
             }
         }
 
-        public int NoOfCases { get; set; }
+        public int NoOfCases
+        {
+            get
+            {
+                return mNoOfCases;
+            }
+            set
+            {
+                mNoOfCases = value;
+            }
+        }
         public string NoOfCasesValid(int testData)
         {
 
@@ -59,7 +98,17 @@ namespace ClassLibrary
             }
         }
 
-        public int ProductID { get; set; }
+        public int ProductID
+        {
+            get
+            {
+                return mProductID;
+            }
+            set
+            {
+                mProductID = value;
+            }
+        }
         public string ProductIDValid(int testData)
         {
             if (testData < 1)
@@ -76,7 +125,17 @@ namespace ClassLibrary
             }
         }
 
-        public string Address { get; set; }
+        public string Address
+        {
+            get
+            {
+                return mAddress;
+            }
+            set
+            {
+                mAddress = value;
+            }
+        }
         public string AddressValid(string testData)
         {
             if (testData.Length < 1)
@@ -93,7 +152,17 @@ namespace ClassLibrary
             }
         }
 
-        public int CustomerID { get; set; }
+        public int CustomerID
+        {
+            get
+            {
+                return mCustomerID;
+            }
+            set
+            {
+                mCustomerID = value;
+            }
+        }
         public string CustomerIDValid(int testData)
         {
             if (testData < 1)
@@ -109,7 +178,18 @@ namespace ClassLibrary
                 return "";
             }
         }
-        public int OrderNo { get; set; }
+
+        public int OrderNo
+        {
+            get
+            {
+                return mOrderNo;
+            }
+            set
+            {
+                mOrderNo = value;
+            }
+        }
         public string OrderIDValid(int testData)
         {
             if (testData < 1)
@@ -125,6 +205,33 @@ namespace ClassLibrary
                 return "";
             }
         }
+        public bool Find(int OrderNo)
+        {
+            // create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the address to search for
+            DB.AddParameter("@OrderNo", OrderNo);
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_FilterByOrderNo");
+            // 0 means record was found so error comes up, 1 means its not in the database so its added
+            if (DB.Count == 1)
+            {
+                mOrderNo = Convert.ToInt32(DB.DataTable.Rows[0]["OrderNo"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]); ;
+                mAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]); ;
+                mProductID = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]); ;
+                mNoOfCases = Convert.ToInt32(DB.DataTable.Rows[0]["NoOfCases"]); ;
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                mFulfilled = Convert.ToBoolean(DB.DataTable.Rows[0]["Fulfilled"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
 
     }
 }
