@@ -22,7 +22,7 @@ namespace Testing1
         [TestMethod]
         public void InstanceOK()
         {
-            // Creates an instance of the new Class wanting to be created
+            // Creates a new instance of the Class
             clsCustomer ACustomer = new clsCustomer();
             // Tests to check existence
             Assert.IsNotNull(ACustomer);

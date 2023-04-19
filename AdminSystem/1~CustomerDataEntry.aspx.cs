@@ -17,8 +17,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         // Creates a new instance of clsCustomer
         clsCustomer ACustomer = new clsCustomer();
-        // Captures the Customer ID
-        string CustomerID = txtCustomerID.Text;
         // Captures the Customer Name
         string CustomerName = txtCustomerName.Text;
         // Captures the Customer Phone Number
@@ -27,7 +25,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string CustomerEmail = txtCustomerEmail.Text;
         // Captures the Customer Password
         string CustomerPass = txtCustomerPass.Text;
-        //
+        // Captures the Account Creation Date
         string AccountCreationDate = txtAccountCreationDate.Text;
         // Store any error messages
         string Error = "";
@@ -35,8 +33,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
         if (Error == "")
         {
-            // Captures the Customer ID
-            ACustomer.CustomerID = Convert.ToInt32(txtCustomerID.Text);
             // Captures the Customer Name
             ACustomer.CustomerName = txtCustomerName.Text;
             // Captures the Customer Phone Number
@@ -47,12 +43,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ACustomer.CustomerPass = txtCustomerPass.Text;
             // Captures the Account Creation Date
             ACustomer.AccountCreationDate = Convert.ToDateTime(txtAccountCreationDate.Text);
-            // Captures the Account Checker
-            ACustomer.AccountChecker = Convert.ToBoolean(chkAccountChecker.Checked);
-            // Stores the Customer ID in the session object
-            Session["ACustomer"] = ACustomer;
-            // Navigates to the viewer page
-            Response.Redirect("1~CustomerViewer.aspx");
+            // Capture the Account
+            ACustomer.AccountChecker = chkAccountChecker.Checked;
+            // Creates a new instance of clsCustomerCollection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            // Setting the ThisCustomer property
+            CustomerList.ThisCustomer = ACustomer;
+            // Add new record
+            CustomerList.Add();
+            // Redirect back to Customer List
+            Response.Redirect("1~CustomerList.aspx");
         }
         else
         {
