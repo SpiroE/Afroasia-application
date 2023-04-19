@@ -210,8 +210,13 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             // create some test data
             DateTime TestData = DateTime.Now.Date.AddYears(-100);
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = "1";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = TestData.ToString();
             string Error = "";
-            Error = AnOrder.DateAddedValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreNotEqual(Error, "");
         }
@@ -222,9 +227,14 @@ namespace Testing4
             // create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             // create some test data
-            DateTime TestData = DateTime.Now.Date.AddYears(-1).AddDays(-1);
+            DateTime TestData = DateTime.Now.Date.AddDays(-1);
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = "1";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = TestData.ToString();
             string Error = "";
-            Error = AnOrder.DateAddedValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreNotEqual(Error, "");
         }
@@ -235,9 +245,14 @@ namespace Testing4
             // create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             // create some test data
-            DateTime TestData = DateTime.Now.Date.AddYears(-1);
+            DateTime TestData = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = "1";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = TestData.ToString();
             string Error = "";
-            Error = AnOrder.DateAddedValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
         }
@@ -249,60 +264,31 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             // create some test data
             DateTime TestData = DateTime.Now.Date.AddDays(+1);
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = "1";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = TestData.ToString();
             string Error = "";
-            Error = AnOrder.DateAddedValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void DateAddedMaxLessOne()
+        public void DateAddedExtremeMax()
         {
             // create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             // create some test data
-            DateTime TestData = DateTime.Now.Date.AddYears(+1).AddDays(-1);
+            DateTime TestData = DateTime.Now.Date.AddYears(+100);
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = "1";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = TestData.ToString();
             string Error = "";
-            Error = AnOrder.DateAddedValid(TestData);
-            // test to see if the two values are the same
-            Assert.AreNotEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void DateAddedMax()
-        {
-            // create an instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
-            // create some test data
-            DateTime TestData = DateTime.Now.Date.AddYears(+1);
-            string Error = "";
-            Error = AnOrder.DateAddedValid(TestData);
-            // test to see if the two values are the same
-            Assert.AreNotEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void DateAddedMaxPlusOne()
-        {
-            // create an instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
-            // create some test data
-            DateTime TestData = DateTime.Now.Date.AddYears(+1).AddDays(+1);
-            string Error = "";
-            Error = AnOrder.DateAddedValid(TestData);
-            // test to see if the two values are the same
-            Assert.AreNotEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void DateAddedMid()
-        {
-            // create an instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
-            // create some test data
-            DateTime TestData = DateTime.Now.Date.AddMonths(+6);
-            string Error = "";
-            Error = AnOrder.DateAddedValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreNotEqual(Error, "");
         }
@@ -328,8 +314,14 @@ namespace Testing4
             // create some test data
             int TestData = -1000000;
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = "1";
+            string NoOfCasesTestData = TestData.ToString();
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.NoOfCasesValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreNotEqual(Error, "");
         }
@@ -342,8 +334,14 @@ namespace Testing4
             // create some test data
             int TestData = 0;
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = "1";
+            string NoOfCasesTestData = TestData.ToString();
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.NoOfCasesValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreNotEqual(Error, "");
         }
@@ -356,8 +354,14 @@ namespace Testing4
             // create some test data
             int TestData = 1;
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = "1";
+            string NoOfCasesTestData = TestData.ToString();
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.NoOfCasesValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
         }
@@ -370,8 +374,14 @@ namespace Testing4
             // create some test data
             int TestData = 2;
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = "1";
+            string NoOfCasesTestData = TestData.ToString();
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.NoOfCasesValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
         }
@@ -384,8 +394,14 @@ namespace Testing4
             // create some test data
             int TestData = int.MaxValue - 1;
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = "1";
+            string NoOfCasesTestData = TestData.ToString();
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.NoOfCasesValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
         }
@@ -398,8 +414,14 @@ namespace Testing4
             // create some test data
             int TestData = int.MaxValue;
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = "1";
+            string NoOfCasesTestData = TestData.ToString();
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.NoOfCasesValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
         }
@@ -426,8 +448,14 @@ namespace Testing4
             // create some test data
             int TestData = -1000000;
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = TestData.ToString();
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.ProductIDValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreNotEqual(Error, "");
         }
@@ -440,8 +468,14 @@ namespace Testing4
             // create some test data
             int TestData = 0;
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = TestData.ToString();
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.ProductIDValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreNotEqual(Error, "");
         }
@@ -454,8 +488,14 @@ namespace Testing4
             // create some test data
             int TestData = 1;
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = TestData.ToString();
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.ProductIDValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
         }
@@ -468,8 +508,14 @@ namespace Testing4
             // create some test data
             int TestData = 2;
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = TestData.ToString();
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.ProductIDValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
         }
@@ -482,8 +528,14 @@ namespace Testing4
             // create some test data
             int TestData = int.MaxValue - 1;
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = TestData.ToString();
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.ProductIDValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
         }
@@ -496,8 +548,14 @@ namespace Testing4
             // create some test data
             int TestData = int.MaxValue;
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = TestData.ToString();
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.ProductIDValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
         }
@@ -523,8 +581,14 @@ namespace Testing4
             // create some test data
             string TestData = "17 Arminia Street, Leicester, LE4 6ER";
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = TestData;
+            string ProductIDTestData = "10";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.AddressValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
         }
@@ -537,8 +601,14 @@ namespace Testing4
             // create some test data
             string TestData = "";
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = TestData;
+            string ProductIDTestData = "10";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.AddressValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreNotEqual(Error, "");
         }
@@ -551,8 +621,14 @@ namespace Testing4
             // create some test data
             string TestData = "1";
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = TestData;
+            string ProductIDTestData = "10";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.AddressValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
         }
@@ -565,8 +641,14 @@ namespace Testing4
             // create some test data
             string TestData = "17";
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = TestData;
+            string ProductIDTestData = "10";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.AddressValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
         }
@@ -580,8 +662,14 @@ namespace Testing4
             string TestData = "";
             TestData = TestData.PadLeft(99, '*');
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = TestData;
+            string ProductIDTestData = "10";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.AddressValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
         }
@@ -595,8 +683,14 @@ namespace Testing4
             string TestData = "";
             TestData = TestData.PadLeft(100, '*');
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = TestData;
+            string ProductIDTestData = "10";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.AddressValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
         }
@@ -610,8 +704,14 @@ namespace Testing4
             string TestData = "";
             TestData = TestData.PadLeft(101, '*');
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = TestData;
+            string ProductIDTestData = "10";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.AddressValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreNotEqual(Error, "");
         }
@@ -625,8 +725,14 @@ namespace Testing4
             string TestData = "";
             TestData = TestData.PadLeft(50, '*');
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = TestData;
+            string ProductIDTestData = "10";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.AddressValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
         }
@@ -640,8 +746,14 @@ namespace Testing4
             string TestData = "";
             TestData = TestData.PadLeft(5000, '*');
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = TestData;
+            string ProductIDTestData = "10";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.AddressValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreNotEqual(Error, "");
         }
@@ -667,8 +779,14 @@ namespace Testing4
             // create some test data
             int TestData = -1000000;
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = TestData.ToString();
+            string AddressTestData = "54 Waterloo Loo, L00 100";
+            string ProductIDTestData = "10";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.CustomerIDValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreNotEqual(Error, "");
         }
@@ -681,8 +799,14 @@ namespace Testing4
             // create some test data
             int TestData = 0;
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = TestData.ToString();
+            string AddressTestData = "54 Waterloo Loo, L00 100";
+            string ProductIDTestData = "10";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.CustomerIDValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreNotEqual(Error, "");
         }
@@ -695,8 +819,14 @@ namespace Testing4
             // create some test data
             int TestData = 1;
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = TestData.ToString();
+            string AddressTestData = "54 Waterloo Loo, L00 100";
+            string ProductIDTestData = "10";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.CustomerIDValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
         }
@@ -709,8 +839,14 @@ namespace Testing4
             // create some test data
             int TestData = 2;
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = TestData.ToString();
+            string AddressTestData = "54 Waterloo Loo, L00 100";
+            string ProductIDTestData = "10";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.CustomerIDValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
         }
@@ -723,8 +859,14 @@ namespace Testing4
             // create some test data
             int TestData = int.MaxValue - 1;
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = TestData.ToString();
+            string AddressTestData = "54 Waterloo Loo, L00 100";
+            string ProductIDTestData = "10";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.CustomerIDValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
         }
@@ -737,8 +879,14 @@ namespace Testing4
             // create some test data
             int TestData = int.MaxValue;
             //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = TestData.ToString();
+            string AddressTestData = "54 Waterloo Loo, L00 100";
+            string ProductIDTestData = "10";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
             string Error = "";
-            Error = AnOrder.CustomerIDValid(TestData);
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
             // test to see if the two values are the same
             Assert.AreEqual(Error, "");
         }

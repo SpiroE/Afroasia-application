@@ -17,18 +17,32 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //Create a new instance of clsOrder
         clsOrder AnOrder = new clsOrder();
-        //capture the data from the text
-        AnOrder.OrderNo = Convert.ToInt32(txtOrderNo.Text);
-        AnOrder.CustomerID = Convert.ToInt32(txtCustomerID.Text);
-        AnOrder.Address = txtAddressID.Text;
-        AnOrder.ProductID = Convert.ToInt32(txtProductID.Text);
-        AnOrder.NoOfCases = Convert.ToInt32(txtNoOfCases.Text);
-        AnOrder.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
-        AnOrder.Fulfilled = chkFulfilled.Checked;
-        // Store the order into a session object
-        Session["AnOrder"] = AnOrder;
-        //Navigate to the viewer page
-        Response.Redirect("4~OrderViewer.aspx");
+
+        string CustomerID = txtCustomerID.Text;
+        string Address = txtAddressID.Text;
+        string ProductID = txtProductID.Text;
+        string NoOfCases = txtNoOfCases.Text;
+        string DateAdded = txtDateAdded.Text;
+        string Error = "";
+        Error = AnOrder.Valid(CustomerID, Address, ProductID, NoOfCases, DateAdded);
+        if (Error == "")
+        {
+            //capture the data from the text
+            AnOrder.CustomerID = Convert.ToInt32(CustomerID);
+            AnOrder.Address = Address;
+            AnOrder.ProductID = Convert.ToInt32(ProductID);
+            AnOrder.NoOfCases = Convert.ToInt32(NoOfCases);
+            AnOrder.DateAdded = Convert.ToDateTime(DateAdded);
+            // Store the order into a session object
+            Session["AnOrder"] = AnOrder;
+            //Navigate to the viewer page
+            Response.Redirect("4~OrderViewer.aspx");
+        }
+        else
+        {
+            //display error message
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

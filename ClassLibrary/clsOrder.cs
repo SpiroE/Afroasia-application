@@ -52,23 +52,6 @@ namespace ClassLibrary
                 mDateAdded = value;
             }
         }
-        public string DateAddedValid(DateTime testData)
-        {
-            DateTime TestDate = DateTime.Now.Date.AddYears(-1);
-            DateTime TestDate2 = DateTime.Now.Date;
-            if (testData < TestDate)
-            {
-                return "Date is more than 1 year old";
-            }
-            if (testData > TestDate2)
-            {
-                return "Date cannot be after today";
-            }
-            else
-            {
-                return "";
-            }
-        }
 
         public int NoOfCases
         {
@@ -81,22 +64,7 @@ namespace ClassLibrary
                 mNoOfCases = value;
             }
         }
-        public string NoOfCasesValid(int testData)
-        {
 
-            if (testData < 1)
-            {
-                return "The number must be between 0 and " + int.MaxValue + ".";
-            }
-            if (testData > int.MaxValue)
-            {
-                return "The number must not exceed " + int.MaxValue + ".";
-            }
-            else
-            {
-                return "";
-            }
-        }
 
         public int ProductID
         {
@@ -107,21 +75,6 @@ namespace ClassLibrary
             set
             {
                 mProductID = value;
-            }
-        }
-        public string ProductIDValid(int testData)
-        {
-            if (testData < 1)
-            {
-                return "The number must be between 0 and " + int.MaxValue + ".";
-            }
-            if (testData > int.MaxValue)
-            {
-                return "The number must not exceed " + int.MaxValue + ".";
-            }
-            else
-            {
-                return "";
             }
         }
 
@@ -136,21 +89,6 @@ namespace ClassLibrary
                 mAddress = value;
             }
         }
-        public string AddressValid(string testData)
-        {
-            if (testData.Length < 1)
-            {
-                return "The address cannot be blank";
-            }
-            if(testData.Length > 100)
-            {
-                return "The address cannot be bigger than 100 characters";
-            }
-            else
-            {
-                return "";
-            }
-        }
 
         public int CustomerID
         {
@@ -161,21 +99,6 @@ namespace ClassLibrary
             set
             {
                 mCustomerID = value;
-            }
-        }
-        public string CustomerIDValid(int testData)
-        {
-            if (testData < 1)
-            {
-                return "The number must be between 0 and " + int.MaxValue + ".";
-            }
-            if (testData > int.MaxValue)
-            {
-                return "The number must not exceed " + int.MaxValue + ".";
-            }
-            else
-            {
-                return "";
             }
         }
 
@@ -204,6 +127,99 @@ namespace ClassLibrary
             {
                 return "";
             }
+        }
+
+        public string Valid(string CustomerID, string Address, string ProductID, string NoOfCases, string DateAdded)
+        {
+            // create string variable to store the error
+            String Error = "";
+            // create temporary variable to store the error
+            int CustomerIDTemp;
+            int ProductIDTemp;
+            int NoOfCasesTemp;
+            DateTime DateAddedTemp;
+            try
+            {
+                //copy the customer id into the temporary varible
+                CustomerIDTemp = Convert.ToInt32(CustomerID);
+                if(CustomerIDTemp < 1)
+                {
+                    Error = Error + "The CustomerID cannot be smaller than 0 : ";
+                }
+                if(CustomerIDTemp > Int32.MaxValue)
+                {
+                    Error = Error + "The CustomerID cannot be bigger than " + Int32.MaxValue + " : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The CustomerID wasn't a valid number : ";
+            }
+
+            if (Address.Length == 0)
+            {
+                Error = Error + "The address may not be blank : ";
+            }
+            if (Address.Length > 100)
+            {
+                Error = Error + "The address must be less than 100 characters : ";
+            }
+
+            try
+            {
+                //copy the customer id into the temporary varible
+                ProductIDTemp = Convert.ToInt32(ProductID);
+                if (ProductIDTemp < 1)
+                {
+                    Error = Error + "The ProductID cannot be smaller than 0 : ";
+                }
+                if (ProductIDTemp > Int32.MaxValue)
+                {
+                    Error = Error + "The ProductID cannot be bigger than " + Int32.MaxValue + " : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The ProductID wasn't a valid number : ";
+            }
+
+            try
+            {
+                //copy the customer id into the temporary varible
+                NoOfCasesTemp = Convert.ToInt32(NoOfCases);
+                if (NoOfCasesTemp < 1)
+                {
+                    Error = Error + "The number of cases cannot be smaller than 0 : ";
+                }
+                if (NoOfCasesTemp > Int32.MaxValue)
+                {
+                    Error = Error + "The number of cases cannot be bigger than " + Int32.MaxValue + " : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The NoOfCases wasn't a valid number : ";
+            }
+
+            try
+            {
+                //copy the customer id into the temporary varible
+                DateAddedTemp = Convert.ToDateTime(DateAdded);
+                if (DateAddedTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateAddedTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date added wasn't a valid date : ";
+            }
+
+            return Error;
         }
         public bool Find(int OrderNo)
         {
