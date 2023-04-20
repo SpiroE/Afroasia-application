@@ -66,7 +66,7 @@ namespace Testing4
             Boolean OK = true;
             int OrderNo = 1;
             Found = AnOrder.Find(OrderNo);
-            if (AnOrder.Address != "15 Sumerway Street, LE2 8AH")
+            if (AnOrder.Address != "15 Summerway, SE15 3WA")
             {
                 OK = false;
             }
@@ -111,7 +111,7 @@ namespace Testing4
             Boolean OK = true;
             int OrderNo = 1;
             Found = AnOrder.Find(OrderNo);
-            if (AnOrder.DateAdded != Convert.ToDateTime("14/04/2023"))
+            if (AnOrder.DateAdded != Convert.ToDateTime("16/04/2023"))
             {
                 OK = false;
             }
