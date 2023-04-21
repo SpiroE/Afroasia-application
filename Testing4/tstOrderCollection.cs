@@ -55,8 +55,8 @@ namespace Testing4
             TestItem.DateAdded = DateTime.Now.Date;
             TestItem.Fulfilled = true;
             //assign data to the property
-            AllOrders.ThisAddress = TestItem;
-            Assert.AreEqual(AllOrders.ThisAddress, TestItem);
+            AllOrders.ThisOrder = TestItem;
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
         }
 
         [TestMethod]
@@ -83,9 +83,97 @@ namespace Testing4
             Assert.AreEqual(AllOrders.Count, TestList.Count);
         }
 
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create item for the list
+            clsOrder TestItem = new clsOrder();
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.OrderNo = 1;
+            TestItem.CustomerID = 4;
+            TestItem.Address = "15 Noway Lane, NW15 6LN";
+            TestItem.ProductID = 4;
+            TestItem.NoOfCases = 10;
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.Fulfilled = true;
+            AllOrders.ThisOrder = TestItem;
+            PrimaryKey = AllOrders.Add();
+            //add items to the list
+            TestItem.OrderNo = PrimaryKey;
+            //assign data to the property
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+        }
 
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create item for the list
+            clsOrder TestItem = new clsOrder();
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.CustomerID = 4;
+            TestItem.Address = "15 Noway Lane, NW15 6LN";
+            TestItem.ProductID = 4;
+            TestItem.NoOfCases = 10;
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.Fulfilled = true;
+            AllOrders.ThisOrder = TestItem;
+            PrimaryKey = AllOrders.Add();
+            //add items to the list
+            TestItem.OrderNo = PrimaryKey;
+            TestItem.CustomerID = 4;
+            TestItem.Address = "17 Noway Lane, NW15 6LN";
+            TestItem.ProductID = 2;
+            TestItem.NoOfCases = 8;
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.Fulfilled = false;
+            AllOrders.ThisOrder = TestItem;
+            AllOrders.Update();
 
+            //assign data to the property
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+        }
 
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create item for the list
+            clsOrder TestItem = new clsOrder();
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.OrderNo = 1;
+            TestItem.CustomerID = 4;
+            TestItem.Address = "15 Noway Lane, NW15 6LN";
+            TestItem.ProductID = 4;
+            TestItem.NoOfCases = 10;
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.Fulfilled = true;
+            AllOrders.ThisOrder = TestItem;
+            PrimaryKey = AllOrders.Add();
+            //add items to the list
+            TestItem.OrderNo = PrimaryKey;
+            //assign data to the property
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            AllOrders.Delete();
+            Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void ReportByFulfilledTrueFound()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            FilteredOrders.ReportByFulfilled(true);
+            //remeber to add 1 every run as the add/update function is still running
+            Assert.AreEqual(10, FilteredOrders.Count);
+        }
 
 
     }
