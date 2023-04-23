@@ -17,6 +17,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         // Creates a new instance of clsCustomer
         clsCustomer ACustomer = new clsCustomer();
+        string CustomerID = txtCustomerID.Text;
         // Captures the Customer Name
         string CustomerName = txtCustomerName.Text;
         // Captures the Customer Phone Number
@@ -33,24 +34,40 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = ACustomer.Valid(CustomerName, CustomerPhoneNo, CustomerEmail, CustomerPass, AccountCreationDate);
         if (Error == "")
         {
+            // Captures the Customer ID
+            ACustomer.CustomerID = Convert.ToInt32(CustomerID);
             // Captures the Customer Name
-            ACustomer.CustomerName = txtCustomerName.Text;
+            ACustomer.CustomerName = CustomerName;
             // Captures the Customer Phone Number
-            ACustomer.CustomerPhoneNo = txtCustomerPhoneNo.Text;
+            ACustomer.CustomerPhoneNo = CustomerPhoneNo;
             // Captures the Customer Email
-            ACustomer.CustomerEmail = txtCustomerEmail.Text;
+            ACustomer.CustomerEmail = CustomerEmail;
             // Captures the Customer Password
-            ACustomer.CustomerPass = txtCustomerPass.Text;
+            ACustomer.CustomerPass = CustomerPass;
             // Captures the Account Creation Date
-            ACustomer.AccountCreationDate = Convert.ToDateTime(txtAccountCreationDate.Text);
+            ACustomer.AccountCreationDate = Convert.ToDateTime(txtAccountCreationDate);
             // Capture the Account
             ACustomer.AccountChecker = chkAccountChecker.Checked;
             // Creates a new instance of clsCustomerCollection
             clsCustomerCollection CustomerList = new clsCustomerCollection();
-            // Setting the ThisCustomer property
-            CustomerList.ThisCustomer = ACustomer;
-            // Add new record
-            CustomerList.Add();
+            // If this is a new record (CustomerID = -1) then...
+            if (Convert.ToInt32(CustomerID) == -1)
+            {
+                // Setting the ThisCustomer property
+                CustomerList.ThisCustomer = ACustomer;
+                // Add the new record
+                CustomerList.Add();
+            }
+            // Else it is an update
+            else
+            {
+                // Find record to update
+                CustomerList.ThisCustomer.Find(Convert.ToInt32(CustomerID));
+                // Setting the ThisCustomer property
+                CustomerList.ThisCustomer = ACustomer;
+                // Update record
+                CustomerList.Update();
+            }
             // Redirect back to Customer List
             Response.Redirect("1~CustomerList.aspx");
         }
@@ -58,7 +75,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             // Display error message
             lblError.Text = Error;
-        }    
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
