@@ -12,35 +12,12 @@ namespace ClassLibrary
 
         public clsCustomerCollection()
         {
-            // Variable for Index
-            Int32 Index = 0;
-            // Variable to store Record Count
-            Int32 RecordCount = 0;
-            // Object for SQL Data Connection
+            // Connecting to the Database
             clsDataConnection DB = new clsDataConnection();
-            // Execute the stored procedure tblCustomer_SelectAll
+            // Execute the Stored Procedure
             DB.Execute("sproc_tblCustomer_SelectAll");
-            // Gets the count of records
-            RecordCount = DB.Count;
-
-            // While there are records to process...
-            while (Index < RecordCount)
-            {
-                // Creates a new blank Customer
-                clsCustomer ACustomer = new clsCustomer();
-                // Setting the properties of each item
-                ACustomer.AccountChecker = Convert.ToBoolean(DB.DataTable.Rows[Index]["AccountChecker"]);
-                ACustomer.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
-                ACustomer.CustomerName = Convert.ToString(DB.DataTable.Rows[Index]["CustomerName"]);
-                ACustomer.CustomerPhoneNo = Convert.ToString(DB.DataTable.Rows[Index]["CustomerPhoneNo"]);
-                ACustomer.CustomerEmail = Convert.ToString(DB.DataTable.Rows[Index]["CustomerEmail"]);
-                ACustomer.CustomerPass = Convert.ToString(DB.DataTable.Rows[Index]["CustomerPass"]);
-                ACustomer.AccountCreationDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["AccountCreationDate"]);
-                // Add items to Test List
-                mCustomerList.Add(ACustomer);
-                // Point to the next record
-                Index++;
-            }
+            // Populate Array List with the data table
+            PopulateArray(DB);
         }
 
         // Public property for the Customer List
@@ -128,5 +105,45 @@ namespace ClassLibrary
             DB.Execute("sproc_tblCustomer_Delete");
         }
 
+        public void ReportByCustomerName(string CustomerName)
+        {
+            // Connecting to the Database
+            clsDataConnection DB = new clsDataConnection();
+            // Send Customer Name parameter to the Database
+            DB.AddParameter("@CustomerName", CustomerName);
+            // Execute the Stored Procedure
+            DB.Execute("sproc_tblCustomer_FilterByCustomerName");
+            // Populate Array List with the data table
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            // Variable for Index
+            Int32 Index = 0;
+            // Variable to store Record Count
+            Int32 RecordCount = 0;
+            // Gets the count of Records
+            RecordCount = DB.Count;
+            // Clears the private Array List
+            mCustomerList = new List<clsCustomer>();
+            // While there are records to process then...
+            while (Index < RecordCount)
+            {
+                // Creates a blank address
+                clsCustomer ACustomer = new clsCustomer();
+                // Read the fiels of the current Record
+                ACustomer.AccountChecker = Convert.ToBoolean(DB.DataTable.Rows[Index]["AccountChecker"]);
+                ACustomer.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
+                ACustomer.CustomerName = Convert.ToString(DB.DataTable.Rows[Index]["CustomerName"]);
+                ACustomer.CustomerPhoneNo = Convert.ToString(DB.DataTable.Rows[Index]["CustomerPhoneNo"]);
+                ACustomer.CustomerEmail = Convert.ToString(DB.DataTable.Rows[Index]["CustomerEmail"]);
+                ACustomer.CustomerPass = Convert.ToString(DB.DataTable.Rows[Index]["CustomerPass"]);
+                ACustomer.AccountCreationDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["AccountCreationDate"]);
+                // Add record to the private data member
+                mCustomerList.Add(ACustomer);
+                // Point to the next record available
+                Index++;
+            }
+        }
     }
 }

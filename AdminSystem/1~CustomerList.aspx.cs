@@ -82,4 +82,36 @@ public partial class _1_List : System.Web.UI.Page
         }
     }
 
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        // Creates a new instance of the Class
+        clsCustomerCollection Customers = new clsCustomerCollection();
+        // Set the data source to list the customers in the collection
+        Customers.ReportByCustomerName(txtFilter.Text);
+        lstCustomerList.DataSource = Customers.CustomerList;
+        // Setting the name of the Primary Key
+        lstCustomerList.DataValueField = "CustomerID";
+        // Setting the data field to display Customer Email
+        lstCustomerList.DataTextField = "CustomerName";
+        // Bind data to the list
+        lstCustomerList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        // Creates a new instance of the Class
+        clsCustomerCollection Customers = new clsCustomerCollection();
+        Customers.ReportByCustomerName("");
+        // Clear existing filters to tidy up user interface
+        txtFilter.Text = "";
+        // Set the data source to list the customers in the collection
+        lstCustomerList.DataSource = Customers.CustomerList;
+        // Setting the name of the Primary Key
+        lstCustomerList.DataValueField = "CustomerID";
+        // Setting the data field to display Customer Email
+        lstCustomerList.DataTextField = "CustomerName";
+        // Bind data to the list
+        lstCustomerList.DataBind();
+    }
 }
