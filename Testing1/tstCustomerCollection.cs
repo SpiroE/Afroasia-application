@@ -100,10 +100,10 @@ namespace Test_Framework
             // Setting the properties of each
             TestItem.AccountChecker = true;
             TestItem.CustomerID = 1;
-            TestItem.CustomerName = "Aisha Tester";
-            TestItem.CustomerPhoneNo = "+445037082248";
-            TestItem.CustomerEmail = "aishatester@gmail.com";
-            TestItem.CustomerPass = "PasswordSecret891!!";
+            TestItem.CustomerName = "Test User";
+            TestItem.CustomerPhoneNo = "+447950475512";
+            TestItem.CustomerEmail = "testuserinput@gmail.com";
+            TestItem.CustomerPass = "testpassword123!";
             TestItem.AccountCreationDate = DateTime.Now.Date;
             // Setting ThisCustomer to test data
             AllCustomers.ThisCustomer = TestItem;
@@ -114,6 +114,47 @@ namespace Test_Framework
             // Find the record
             AllCustomers.ThisCustomer.Find(PrimaryKey);
             // Tests to see if both values are the same
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            // Creates an instance of the Class specified below
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            // Creates test data to assign to property
+            clsCustomer TestItem = new clsCustomer();
+            // Variable to store Primary Key
+            Int32 PrimaryKey = 0;
+            // Setting the properties of each
+            TestItem.AccountChecker = true;
+            TestItem.CustomerID = 1;
+            TestItem.CustomerName = "Test User";
+            TestItem.CustomerPhoneNo = "+447950475512";
+            TestItem.CustomerEmail = "testuserinput@gmail.com";
+            TestItem.CustomerPass = "testpassword123!";
+            TestItem.AccountCreationDate = DateTime.Now.Date;
+            // Setting ThisCustomer to test data
+            AllCustomers.ThisCustomer = TestItem;
+            // Adding the record
+            PrimaryKey = AllCustomers.Add();
+            // Setting the Primary Key of the test data
+            TestItem.CustomerID = PrimaryKey;
+            // Modifying the properties
+            TestItem.AccountChecker = false;
+            TestItem.CustomerID = 10;
+            TestItem.CustomerName = "Test User Modified";
+            TestItem.CustomerPhoneNo = "+448061586623";
+            TestItem.CustomerEmail = "testuserinputmodified@gmail.com";
+            TestItem.CustomerPass = "testpassword123modified!";
+            TestItem.AccountCreationDate = DateTime.Now.Date;
+            // Setting the record based upon the modified test data
+            AllCustomers.ThisCustomer = TestItem;
+            // Update the record
+            AllCustomers.Update();
+            // Find the record
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            // Tests to see if ThisCustomer matches specified test data
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
 
