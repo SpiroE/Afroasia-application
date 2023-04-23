@@ -52,6 +52,7 @@ public partial class _1_List : System.Web.UI.Page
             // Store the data in the session object
             Session["CustomerID"] = CustomerID;
             // Redirect to Edit page
+            Response.Redirect("1~CustomerDataEntry.aspx");
         }
         // If no record has been selected then output the error text
         else
@@ -59,4 +60,26 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "You need to select a record to edit from the list";
         }
     }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        // Stire the Primary Key value of the record to be deleted
+        Int32 CustomerID;
+        // If a record has been selected from the list then...
+        if (lstCustomerList.SelectedIndex != -1)
+        {
+            // Get the Primary Key value of the record to delete
+            CustomerID = Convert.ToInt32(lstCustomerList.SelectedValue);
+            // Store the data in the session object
+            Session["CustomerID"] = CustomerID;
+            // Redirect to Delete page
+            Response.Redirect("1~CustomerConfirmDelete.aspx");
+        }
+        // If no record has been selected then output the error text
+        else
+        {
+            lblError.Text = "You need to select a record to delete from the list";
+        }
+    }
+
 }
