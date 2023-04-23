@@ -158,6 +158,7 @@ namespace Test_Framework
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
 
+        [TestMethod]
         public void DeleteMethodOK()
         {
             // Creates an instance of the Class specified below
@@ -188,6 +189,61 @@ namespace Test_Framework
             Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
             // Tests to see if the record was not found
             Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void ReportByCustomerNameMethodOK()
+        {
+            // Creates an instance of the Class specified below containing unfiltered results/data
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            // Creates an instance of the Class specified below containing filtered results/data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            // Apply blank string to return all records
+            FilteredCustomers.ReportByCustomerName("");
+            // Tests to see if both values are the same
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByCustomerNameNoneFound()
+        {
+            // Creates an instance of the Class specified below containing filtered results/data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            // Apply a Customer Name that doesn't exist
+            FilteredCustomers.ReportByCustomerName("xxxxx");
+            // Tests to see if there are no records
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByCustomerNameTestDataFound()
+        {
+            // Creates an instance of the Class specified below containing filtered results/data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            // Variable to store result
+            Boolean OK = true;
+            // Apply a Customer Name that doesn't exist
+            FilteredCustomers.ReportByCustomerName("xxxxx");
+            // Checks if correct number of records are found
+            if (FilteredCustomers.Count == 2)
+            {
+                // Check that the first record has the ID 20
+                if (FilteredCustomers.CustomerList[0].CustomerID != 20)
+                {
+                    OK = false;
+                }
+                // Check that the first record has the ID 22
+                if (FilteredCustomers.CustomerList[1].CustomerID != 22)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            // Tests to see if there are no records
+            Assert.IsTrue(OK);
         }
 
     }

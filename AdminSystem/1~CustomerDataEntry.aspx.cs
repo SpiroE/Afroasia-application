@@ -45,7 +45,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             // Captures the Customer Password
             ACustomer.CustomerPass = CustomerPass;
             // Captures the Account Creation Date
-            ACustomer.AccountCreationDate = Convert.ToDateTime(txtAccountCreationDate);
+            ACustomer.AccountCreationDate = Convert.ToDateTime(AccountCreationDate);
             // Capture the Account
             ACustomer.AccountChecker = chkAccountChecker.Checked;
             // Creates a new instance of clsCustomerCollection
