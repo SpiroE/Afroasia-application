@@ -103,7 +103,7 @@ namespace Testing3
             //Create boolean variable to store the result of the validation
             Boolean Found = false;
             //Create test data to use on method
-            Int32 ProductID = 21;
+            Int32 ProductID = 5;
             //Call the method
             Found = AStock.Find(ProductID);
             //Test to check the result
@@ -120,11 +120,11 @@ namespace Testing3
             //Create boolean variable to record if data is OK
             Boolean OK = true;
             //Create test data to use on method
-            Int32 ProductID = 21;
+            Int32 ProductID = 1;
             //Call the method
             Found = AStock.Find(ProductID);
             //Check the property
-            if (AStock.ProductID != 21)
+            if (AStock.ProductID != 1)
             {
                 OK = false;
             }
@@ -142,11 +142,11 @@ namespace Testing3
             //Create boolean variable to record if data is OK
             Boolean OK = true;
             //Create test data to use on method
-            Int32 ProductID = 21;
+            Int32 ProductID = 5;
             //Call the method
             Found = AStock.Find(ProductID);
             //Check the property
-            if (AStock.ProductName != "Test Name")
+            if (AStock.ProductName != "Jujutsu Kaisen Iphone 11 Case")
             {
                 OK = false;
             }
@@ -164,7 +164,7 @@ namespace Testing3
             //Create boolean variable to record if data is OK
             Boolean OK = true;
             //Create test data to use on method
-            Int32 ProductID = 21;
+            Int32 ProductID = 5;
             //Call the method
             Found = AStock.Find(ProductID);
             //Check the property
@@ -186,11 +186,11 @@ namespace Testing3
             //Create boolean variable to record if data is OK
             Boolean OK = true;
             //Create test data to use on method
-            Int32 ProductID = 21;
+            Int32 ProductID = 5;
             //Call the method
             Found = AStock.Find(ProductID);
             //Check the property
-            if (AStock.StockQuantity != 1)
+            if (AStock.StockQuantity != 45)
             {
                 OK = false;
             }
@@ -208,11 +208,11 @@ namespace Testing3
             //Create boolean variable to record if data is OK
             Boolean OK = true;
             //Create test data to use on method
-            Int32 ProductID = 21;
+            Int32 ProductID = 5;
             //Call the method
             Found = AStock.Find(ProductID);
             //Check the property
-            if (AStock.StockArrivalDate != Convert.ToDateTime("16/09/2015"))
+            if (AStock.StockArrivalDate != Convert.ToDateTime("15/09/2022"))
             {
                 OK = false;
             }
@@ -230,11 +230,11 @@ namespace Testing3
             //Create boolean variable to record if data is OK
             Boolean OK = true;
             //Create test data to use on method
-            Int32 ProductID = 21;
+            Int32 ProductID = 5;
             //Call the method
             Found = AStock.Find(ProductID);
             //Check the property
-            if (AStock.TrackingID != 1)
+            if (AStock.TrackingID != 4)
             {
                 OK = false;
             }
