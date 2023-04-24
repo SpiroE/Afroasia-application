@@ -134,5 +134,67 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string productName, string stockQuantity, string stockArrivalDate, string trackingID)
+        {
+            // String to store any sort of error message
+            String Error = "";
+            //Create a temporary variable to store Date value
+            DateTime DateTemp;
+            //Create a temporary variable to store Int value
+            int IntTemp;
+
+            //If the ProductName is blank send an error message
+            if (productName.Length == 0)
+            {
+                Error = Error + "The Product Name cannot be blank";
+            }
+            //If the ProductName is more than 200 send an error message
+            if (productName.Length > 200)
+            {
+                Error = Error + "The Product Name cannot be more than 200 characters";
+            }
+
+            //Use try-catch to make sure the stockArrivalDate has valid data
+            try
+            {
+                //Set the DateTemp variable as the parameter passed in the method
+                DateTemp = Convert.ToDateTime(stockArrivalDate);
+                //If the date is lower than today's date it sends an error
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be set in the past";
+                }
+                //If the date is higher than today's date it sends an error
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be set in the past";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date";
+            }
+
+            //Set the IntTemp variable as the parameter passed in the method
+            IntTemp = Convert.ToInt32(stockQuantity);
+            //If the StockQuantity is less than 1 send an error
+            if (IntTemp < 1)
+            {
+                Error = Error + "The stock quantity cannot be less than 1";
+            }
+
+            //Set the IntTemp variable as the parameter passed in the method
+            IntTemp = Convert.ToInt32(trackingID);
+            //If the TrackingID is less than 1 send an error
+            if (IntTemp < 1)
+            {
+                Error = Error + "The tracking ID cannot be less than 1";
+            }
+
+            //Return any error message 
+            return Error;
+        }
+
     }
 }
