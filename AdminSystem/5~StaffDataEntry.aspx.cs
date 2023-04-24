@@ -44,10 +44,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AStaff.Schedule = Schedule;
             //captures attendance
             AStaff.Attendance = Convert.ToDateTime(Attendance);
-            //store the address in the session object
-            Session["AStaff"] = AStaff;
+            //captures shift confrimation
+            AStaff.ShiftConfirmation = chkShiftConfirmation.Checked;
+            //create new instance of staff collection
+            clsStaffCollection StaffList = new clsStaffCollection();
+            //set ThisStaff property
+            StaffList.ThisStaff = AStaff;
+            //add new record
+            StaffList.Add();
             //navigate to the viewrer page
-            Response.Redirect("5~StaffViewer.aspx");
+            Response.Redirect("5~StaffList.aspx");
         }
         else
         {
