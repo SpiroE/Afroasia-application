@@ -104,7 +104,7 @@ namespace Testing5
             Int32 PrimaryKey = 0;
             //setting the properties
             TestItem.ShiftConfirmation = true;
-            TestItem.StaffID = 10;
+            TestItem.StaffID = 1;
             TestItem.StaffName = "Test Add";
             TestItem.StaffPhoneNo = "0719464469";
             TestItem.StaffPayroll = "17.50";
@@ -119,6 +119,47 @@ namespace Testing5
             //find the record
             AllStaff.ThisStaff.Find(PrimaryKey);
             //tests to see that both values are the same
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            //create the item of test data
+            clsStaff TestItem = new clsStaff();
+            //var to store primary key
+            Int32 PrimaryKey = 0;
+            //setting the properties
+            TestItem.ShiftConfirmation = true;
+            TestItem.StaffID = 8;
+            TestItem.StaffName = "Test Add";
+            TestItem.StaffPhoneNo = "0719464469";
+            TestItem.StaffPayroll = "17.50";
+            TestItem.Schedule = "Weekdays";
+            TestItem.Attendance = DateTime.Now.Date;
+            //setting ThisStaff to the test data
+            AllStaff.ThisStaff = TestItem;
+            //add the record
+            PrimaryKey = AllStaff.Add();
+            //set primary key of test data
+            TestItem.StaffID = PrimaryKey;
+            //modifying the test data
+            TestItem.ShiftConfirmation = false;
+            TestItem.StaffID = 9;
+            TestItem.StaffName = "Test Modify";
+            TestItem.StaffPhoneNo = "0791664496";
+            TestItem.StaffPayroll = "19.50";
+            TestItem.Schedule = "Weekends";
+            TestItem.Attendance = DateTime.Now.Date;
+            //set record based on new data
+            AllStaff.ThisStaff = TestItem;
+            //update record
+            AllStaff.Update();
+            //find record
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            //tests to see if ThisStaff matches test data
             Assert.AreEqual(AllStaff.ThisStaff, TestItem);
         }
 
