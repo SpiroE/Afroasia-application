@@ -13,7 +13,9 @@
         </div>
         <p>
             <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
+            <asp:Button ID="btnEdit" runat="server" height="26px" OnClick="btnEdit_Click" style="z-index: 1; left: 47px; top: 267px; position: absolute" Text="Edit" width="37px" />
         </p>
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 10px; top: 312px; position: absolute"></asp:Label>
     </form>
 </body>
 </html>
