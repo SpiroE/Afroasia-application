@@ -121,7 +121,7 @@ namespace ClassLibrary
             // Variable for Index
             Int32 Index = 0;
             // Variable to store Record Count
-            Int32 RecordCount = 0;
+            Int32 RecordCount;
             // Gets the count of Records
             RecordCount = DB.Count;
             // Clears the private Array List
