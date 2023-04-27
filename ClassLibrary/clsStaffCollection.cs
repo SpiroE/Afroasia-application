@@ -21,7 +21,7 @@ namespace ClassLibrary
             PopulateArray(DB);
         }
 
-        public List<clsStaff> StaffList 
+        public List<clsStaff> StaffList
         {
             get
             {
@@ -42,13 +42,13 @@ namespace ClassLibrary
                 //return the count of the list
                 return mStaffList.Count;
             }
-            set 
+            set
             {
                 //return to this later
             }
         }
 
-        public clsStaff ThisStaff 
+        public clsStaff ThisStaff
         {
             get
             {
@@ -144,5 +144,6 @@ namespace ClassLibrary
                 Index++;
             }
 
+        }
     }
 }
