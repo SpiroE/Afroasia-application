@@ -228,7 +228,7 @@ namespace Testing5
             //variable to store outcome
             Boolean OK = true;
             //apply staff name that doesn't exist
-            FilteredStaff.ReportByStaffName("xxxxxxx");
+            FilteredStaff.ReportByStaffName("yyyyyyy");
             //check that the correct number of records have been found
             if (FilteredStaff.Count == 2)
             {
