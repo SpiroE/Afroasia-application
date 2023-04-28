@@ -202,7 +202,24 @@ namespace Testing4
             // test to see if the two values are the same
             Assert.AreEqual(AnOrder.DateAdded, TestData);
         }
-        
+
+        [TestMethod]
+        public void InvalidDateAdded()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = "1";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = "bob";
+            string Error = "";
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
+            // test to see if the two values are the same
+            Assert.AreNotEqual(Error, "");
+        }
+
         [TestMethod]
         public void DateAddedMinExtreme()
         {
@@ -304,6 +321,25 @@ namespace Testing4
             AnOrder.NoOfCases = TestData;
             // test to see if the two values are the same
             Assert.AreEqual(AnOrder.NoOfCases, TestData);
+        }
+
+        [TestMethod]
+        public void InvalidNoOfCase()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = "1";
+            string NoOfCasesTestData = "bob";
+            string DateAddedTestData = Convert.ToString(DateToday);
+            string Error = "";
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
+            // test to see if the two values are the same
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -438,6 +474,25 @@ namespace Testing4
             AnOrder.ProductID = TestData;
             // test to see if the two values are the same
             Assert.AreEqual(AnOrder.ProductID, TestData);
+        }
+
+        [TestMethod]
+        public void InvalidProductID()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "1";
+            string AddressTestData = "17 Camdem Road, CA15 1TR";
+            string ProductIDTestData = "bob";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
+            string Error = "";
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
+            // test to see if the two values are the same
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -769,6 +824,25 @@ namespace Testing4
             AnOrder.CustomerID = TestData;
             // test to see if the two values are the same
             Assert.AreEqual(AnOrder.CustomerID, TestData);
+        }
+
+        [TestMethod]
+        public void InvalidCustomerID()
+        {
+            // create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // create some test data
+            //create error message
+            DateTime DateToday = DateTime.Now.Date;
+            string CustomerIDTestData = "bob";
+            string AddressTestData = "54 Waterloo Loo, L00 100";
+            string ProductIDTestData = "10";
+            string NoOfCasesTestData = "10";
+            string DateAddedTestData = Convert.ToString(DateToday);
+            string Error = "";
+            Error = AnOrder.Valid(CustomerIDTestData, AddressTestData, ProductIDTestData, NoOfCasesTestData, DateAddedTestData);
+            // test to see if the two values are the same
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
