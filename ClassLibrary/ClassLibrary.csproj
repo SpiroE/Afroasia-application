@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="clsCustomerCollection.cs" />
     <Compile Include="clsCustomerService.cs" />
+    <Compile Include="clsCustomerServiceCollection.cs" />
     <Compile Include="clsDataConnection.cs" />
     <Compile Include="clsOrder.cs" />
     <Compile Include="clsCustomer.cs" />
