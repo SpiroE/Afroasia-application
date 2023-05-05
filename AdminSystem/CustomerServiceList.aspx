@@ -43,6 +43,18 @@
             left: 16px;
             z-index: 1;
         }
+        .auto-style7 {
+            position: absolute;
+            top: 397px;
+            left: 22px;
+            z-index: 1;
+        }
+        .auto-style8 {
+            position: absolute;
+            top: 394px;
+            left: 183px;
+            z-index: 1;
+        }
     </style>
 </head>
 <body style="height: 588px">
@@ -57,6 +69,8 @@
         <asp:Button ID="btnApply" runat="server" CssClass="auto-style4" OnClick="btnApply_Click" Text="Apply" />
         <asp:Button ID="btnClear" runat="server" CssClass="auto-style5" OnClick="btnClear_Click" Text="Clear" />
         <asp:Label ID="Label1" runat="server" CssClass="auto-style6" Text="[lblError]"></asp:Label>
+        <asp:Label ID="Label2" runat="server" CssClass="auto-style7" Text="Enter a CustomerID"></asp:Label>
+        <asp:TextBox ID="TextBox1" runat="server" CssClass="auto-style8"></asp:TextBox>
     </form>
 </body>
 </html>
